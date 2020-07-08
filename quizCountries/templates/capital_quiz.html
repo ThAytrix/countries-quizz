@@ -5,15 +5,13 @@
     <hr>
     <h2 class="mb-5 text-center">{{question}}</h2>
     <div class="row">
-        {% for pays in datas %}
+        {% for jeux in datas %}
         <div class="col-6 text-center">
             <div class="card mb-4 mx-auto" style="width: 50%;">
-                <!-- <img class="card-img-top" src="{{ pays.flag }}" alt="Card image cap" style="height: 179px;"> -->
-                <img class="card-img-top" src="{{ pays.flag }}" alt="Card image cap">
                 <hr class="py-0 my-0">
                 <div class="card-body pt-2">
-                    <h5 class="card-title">{{pays.name}}</h5>
-                    <a href="{{ url_for('quizQ', name=pays.name) }}" class="btn btn-primary btn-sm">Valider</a>
+                    <h5 class="card-title">{{jeux}}</h5>
+                    <a href="{{ url_for('quizQ', name=jeux) }}" class="btn btn-primary btn-sm">Valider</a>
                 </div>
             </div>
         </div>
