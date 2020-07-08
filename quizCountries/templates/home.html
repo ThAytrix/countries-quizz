@@ -1,8 +1,12 @@
 {% extends "layout.html" %}
-{% block title %}{{ super() }} - Home{% endblock %}
+{% block title %}{{ super() }} - Accueil{% endblock %}
 {% block content %}
-    <h1>Home</h1>
-    <p class="important">
-      Bienvenu sur Quiz Countries.
-    </p>
+    <h1 class="text-center">Accueil</h1>
+    <hr>
+    <p class="text-center">Bienvenue dans Quiz Countries !</p>
+    <div class="row mt-5">
+      <div class="col-4 m-auto mt-5">
+        <a href="{{ url_for('quiz') }}" class="btn btn-primary btn-lg btn-block">Démarrer une partie</a>
+      </div>
+    </div>
 {% endblock %}

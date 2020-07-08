@@ -6,12 +6,12 @@ from quizCountries.models import User
 
 class RegistrationForm(FlaskForm):
     username = StringField('Nom d\'utilisateur',
-                           validators=[DataRequired(), Length(min=2, max=20)])
+                           validators=[DataRequired(message="Veuillez renseigner un pseudo"), Length(min=2, max=20, message="Votre pseudo doit être compris entre 2 et 20 caractères")])
     email = StringField('Email',
-                        validators=[DataRequired(), Email()])
-    password = PasswordField('Mot de passe', validators=[DataRequired()])
+                        validators=[DataRequired(message="Veuillez renseigner un mail"), Email(message="Veuillez renseigner un mail valide")])
+    password = PasswordField('Mot de passe', validators=[DataRequired(message="Veuillez renseigner un mot de passe")])
     confirm_password = PasswordField('Confirmer le mot de passe',
-                                     validators=[DataRequired(), EqualTo('password')])
+                                     validators=[DataRequired(message="Veuillez renseigner un mot de passe"), EqualTo('password', message="Les deux mots de passe ne sont pas identiques")])
     submit = SubmitField('S\'inscrire')
 
     def validate_username(self, username):
@@ -27,7 +27,7 @@ class RegistrationForm(FlaskForm):
 
 class LoginForm(FlaskForm):
     email = StringField('Email',
-                        validators=[DataRequired(), Email()])
-    password = PasswordField('Mot de passe', validators=[DataRequired()])
+                        validators=[DataRequired(message="Veuillez renseigner votre mail"), Email(message="Veuillez renseigner un mail valide")])
+    password = PasswordField('Mot de passe', validators=[DataRequired(message="Veuillez renseigner votre mot de passe")])
     remember = BooleanField('Se souvenir de moi')
     submit = SubmitField('Se connecter')
