@@ -6,10 +6,10 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/quiz/<id>')
-def quizQ(id):
-    print(f"{id}")
-    return 'test'
+@app.route('/quiz/<name>')
+def quizQ(name):
+    print(f"{name}")
+    return "name vaut : " + name
 
 @app.route('/quiz')
 def quiz():
