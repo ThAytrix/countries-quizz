@@ -26,7 +26,7 @@ def register():
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash('Your account has been created! You are now able to log in', 'success')
+        flash('Votre compte a été créé! Vous pouvez désormais vous connecter', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
@@ -42,7 +42,7 @@ def login():
             login_user(user, remember=form.remember.data)
             return redirect(url_for('quiz'))
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger')
+            flash('Connexion non réussie. Veuillez vérifier l\'adresse électronique et le mot de passe', 'danger')
     return render_template('login.html', title='Login', form=form)
 
 

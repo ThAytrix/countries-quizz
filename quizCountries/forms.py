@@ -5,29 +5,29 @@ from quizCountries.models import User
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username',
+    username = StringField('Nom d\'utilisateur',
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password',
+    password = PasswordField('Mot de passe', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirmer le mot de passe',
                                      validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Sign Up')
+    submit = SubmitField('S\'inscrire')
 
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
-            raise ValidationError('That username is taken. Please choose a different one.')
+            raise ValidationError('Ce nom d\'utilisateur est pris. Veuillez en choisir un autre.')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
-            raise ValidationError('That email is taken. Please choose a different one.')
+            raise ValidationError('Cette adresse électronique est prise. Veuillez en choisir une autre.')
 
 
 class LoginForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember = BooleanField('Remember Me')
-    submit = SubmitField('Login')
+    password = PasswordField('Mot de passe', validators=[DataRequired()])
+    remember = BooleanField('Se souvenir de moi')
+    submit = SubmitField('Se connecter')
