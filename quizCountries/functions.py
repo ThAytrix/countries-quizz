@@ -76,7 +76,7 @@ def capital():
 	# return r2.content
 	question = {}
 	question["type"] = "capital_quiz.html"
-	question["enonce"] = "Quel est la capital de " + pays_reponse['translations']["fr"] + " ?"
+	question["enonce"] = "Quel est la capitale de " + pays_reponse['translations']["fr"] + " ?"
 	question["reponse"] = pays_reponse['capital']
 	question["leschoix"] = []
 	question["leschoix"].append(pays_reponse['capital'])
