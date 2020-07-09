@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
-{% block title %}{{ super() }} - Home{% endblock %}
+{% block title %}{{ super() }} - Quiz{% endblock %}
 {% block content %}
-    <h1>Quiz</h1>
+    <h1 class="text-center">Quiz</h1>
     <hr>
     <h2 class="mb-5 text-center">{{question}}</h2>
     <div class="row">
         {% for jeux in datas %}
-        <div class="col-6 text-center">
-            <div class="card mb-4 mx-auto" style="width: 50%;">
+        <div class="col-3 text-center">
+            <div class="card mb-4 mx-auto" style="width: 75%;">
                 <hr class="py-0 my-0">
                 <div class="card-body pt-2">
                     <h5 class="card-title">{{jeux}}</h5>

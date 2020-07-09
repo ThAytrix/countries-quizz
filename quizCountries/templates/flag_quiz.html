@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
-{% block title %}{{ super() }} - Home{% endblock %}
+{% block title %}{{ super() }} - Quiz{% endblock %}
 {% block content %}
-    <h1>Quiz</h1>
+    <h1 class="text-center">Quiz</h1>
     <hr>
     <h2 class="mb-5 text-center">{{question}}</h2>
     <div class="row">
         {% for jeux in datas %}
-        <div class="col-6 text-center">
-            <div class="card mb-4 mx-auto" style="width: 50%;">
+        <div class="col-3 text-center">
+            <div class="card mb-4 mx-auto" style="width: 75%;">
+                <img class="card-img-top" src="{{ jeux }}" alt="Card image cap">
                 <hr class="py-0 my-0">
                 <div class="card-body pt-2">
-                    <img class="card-img-top" src="{{jeux}}" alt="Card image cap" style="width: 80%;">
                     <a href="{{ url_for('quizQ', name=jeux) }}" class="btn btn-primary btn-sm">Valider</a>
                 </div>
             </div>

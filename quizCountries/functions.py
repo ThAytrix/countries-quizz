@@ -43,7 +43,7 @@ def capital():
 	# return r2.content
 	question = {}
 	question["type"] = "capital_quiz.html"
-	question["enonce"] = "Quel est la capital de " + pays_reponse['name'] + " ?"
+	question["enonce"] = "Quel est la capital de " + pays_reponse['translations']["fr"] + " ?"
 	question["reponse"] = pays_reponse['capital']
 	question["leschoix"] = []
 	question["leschoix"].append(pays_reponse['capital'])
@@ -84,7 +84,7 @@ def monnaie():
 	# return r2.content
 	question = {}
 	question["type"] = "monnaie_quiz.html"
-	question["enonce"] = "Quel est la monnaie de " + pays_reponse['name'] + " ?"
+	question["enonce"] = "Quel est la monnaie de " + pays_reponse['translations']["fr"] + " ?"
 	question["reponse"] = pays_reponse['currencies'][0]
 	question["leschoix"] = []
 	question["leschoix"].append(pays_reponse['currencies'][0]['name'] + " (" + pays_reponse['currencies'][0]['symbol'] + ")")
@@ -126,7 +126,7 @@ def drapeau():
 	# return r2.content
 	question = {}
 	question["type"] = "flag_quiz.html"
-	question["enonce"] = "Quel est le drapeau de " + pays_reponse['name'] + " ?"
+	question["enonce"] = "Quel est le drapeau de " + pays_reponse['translations']["fr"] + " ?"
 	question["reponse"] = pays_reponse['flag']
 	question["leschoix"] = []
 	question["leschoix"].append(pays_reponse['flag'])
