@@ -15,6 +15,17 @@ def randomGame():
 	else:
 		return drapeau()
 
+def getFourDifferentKeys(nbre_pays):
+	key_response = randrange(1, nbre_pays)
+	keysTab = [key_response]
+	while (True):
+		key_choice = randrange(1, nbre_pays)
+		if key_choice not in keysTab:
+			keysTab.append(key_choice)
+		if len(keysTab) == 4:
+			break
+	return key_response, keysTab[1], keysTab[2], keysTab[3]
+
 def capital():
 
 	#url_un_pays = "https://restcountries.eu/rest/v2/name/" + pays + "?fullText=true"
@@ -27,12 +38,13 @@ def capital():
 
 	nbre_pays = len(rq_pays.json())
 
-	key_reponse = randrange(1, nbre_pays)
+	# key_reponse = randrange(1, nbre_pays)
+	key_reponse, key_choix_2, key_choix_3, key_choix_4 = getFourDifferentKeys(nbre_pays)
 	pays_reponse = rq_pays.json()[key_reponse]
 
-	key_choix_2 = randrange(1, nbre_pays)
-	key_choix_3 = randrange(1, nbre_pays)
-	key_choix_4 = randrange(1, nbre_pays)
+	# key_choix_2 = randrange(1, nbre_pays)
+	# key_choix_3 = randrange(1, nbre_pays)
+	# key_choix_4 = randrange(1, nbre_pays)
 
 	pays_choix2 = rq_pays.json()[key_choix_2]
 	pays_choix3 = rq_pays.json()[key_choix_3]
@@ -69,12 +81,14 @@ def monnaie():
 
 	nbre_pays = len(rq_pays.json())
 
-	key_reponse = randrange(1, nbre_pays)
+	key_reponse, key_choix_2, key_choix_3, key_choix_4 = getFourDifferentKeys(nbre_pays)
+
+	# key_reponse = randrange(1, nbre_pays)
 	pays_reponse = rq_pays.json()[key_reponse]
 
-	key_choix_2 = randrange(1, nbre_pays)
-	key_choix_3 = randrange(1, nbre_pays)
-	key_choix_4 = randrange(1, nbre_pays)
+	# key_choix_2 = randrange(1, nbre_pays)
+	# key_choix_3 = randrange(1, nbre_pays)
+	# key_choix_4 = randrange(1, nbre_pays)
 
 	pays_choix2 = rq_pays.json()[key_choix_2]
 	pays_choix3 = rq_pays.json()[key_choix_3]
@@ -110,12 +124,14 @@ def drapeau():
 
 	nbre_pays = len(rq_pays.json())
 
-	key_reponse = randrange(1, nbre_pays)
+	# key_reponse = randrange(1, nbre_pays)
+	key_reponse, key_choix_2, key_choix_3, key_choix_4 = getFourDifferentKeys(nbre_pays)
+
 	pays_reponse = rq_pays.json()[key_reponse]
 
-	key_choix_2 = randrange(1, nbre_pays)
-	key_choix_3 = randrange(1, nbre_pays)
-	key_choix_4 = randrange(1, nbre_pays)
+	# key_choix_2 = randrange(1, nbre_pays)
+	# key_choix_3 = randrange(1, nbre_pays)
+	# key_choix_4 = randrange(1, nbre_pays)
 
 	pays_choix2 = rq_pays.json()[key_choix_2]
 	pays_choix3 = rq_pays.json()[key_choix_3]
