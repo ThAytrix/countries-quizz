@@ -5,7 +5,7 @@ import requests
 import random
 
 def randomGame():
-
+	'''renvoie un nombre aléatoire correspondant à un type de question'''
 	select_game = randrange(1, 4)
 	
 	if select_game == 1:
@@ -16,15 +16,36 @@ def randomGame():
 		return drapeau()
 
 def getFourDifferentKeys(nbre_pays):
+	'''retourne 4 pays différents'''
 	key_response = randrange(1, nbre_pays)
 	keysTab = [key_response]
 	while (True):
 		key_choice = randrange(1, nbre_pays)
 		if key_choice not in keysTab:
 			keysTab.append(key_choice)
-		if len(keysTab) == 4:
+		if len(keysTab) == 40:
 			break
 	return key_response, keysTab[1], keysTab[2], keysTab[3]
+
+def getFourDifferentsCountriesWithCapitale(nbre_pays, rq_pays):
+	'''retourne 4 pays différents contenant une capitale renseignée'''
+	pays = rq_pays.json()
+	while True:
+		key_reponse, key_choix_2, key_choix_3, key_choix_4 = getFourDifferentKeys(nbre_pays)
+		if "" not in (pays[key_reponse]["capital"], pays[key_choix_2]["capital"], pays[key_choix_3]["capital"], pays[key_choix_4]["capital"]):
+			break
+	return key_reponse, key_choix_2, key_choix_3, key_choix_4
+
+def getFourDifferentsCountriesWithDifferentsDevises(nbre_pays, rq_pays):
+	'''retourne 4 pays différents contenant des monnaies différentes'''
+	pays = rq_pays.json()
+	while True:
+		key_reponse, key_choix_2, key_choix_3, key_choix_4 = getFourDifferentKeys(nbre_pays)
+		listCurrencies =[pays[key_reponse]['currencies'][0]['name'], pays[key_choix_2]['currencies'][0]['name'], pays[key_choix_3]['currencies'][0]['name'], pays[key_choix_4]['currencies'][0]['name']]
+		listUniqueCurrencies = list(set(listCurrencies))
+		if len(listCurrencies) == len(listUniqueCurrencies):
+			break
+	return key_reponse, key_choix_2, key_choix_3, key_choix_4
 
 def capital():
 
@@ -39,7 +60,7 @@ def capital():
 	nbre_pays = len(rq_pays.json())
 
 	# key_reponse = randrange(1, nbre_pays)
-	key_reponse, key_choix_2, key_choix_3, key_choix_4 = getFourDifferentKeys(nbre_pays)
+	key_reponse, key_choix_2, key_choix_3, key_choix_4 = getFourDifferentsCountriesWithCapitale(nbre_pays, rq_pays)
 	pays_reponse = rq_pays.json()[key_reponse]
 
 	# key_choix_2 = randrange(1, nbre_pays)
@@ -81,7 +102,7 @@ def monnaie():
 
 	nbre_pays = len(rq_pays.json())
 
-	key_reponse, key_choix_2, key_choix_3, key_choix_4 = getFourDifferentKeys(nbre_pays)
+	key_reponse, key_choix_2, key_choix_3, key_choix_4 = getFourDifferentsCountriesWithDifferentsDevises(nbre_pays, rq_pays)
 
 	# key_reponse = randrange(1, nbre_pays)
 	pays_reponse = rq_pays.json()[key_reponse]
