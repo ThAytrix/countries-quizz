@@ -72,8 +72,28 @@ def quizQ():
     
 
     test_string = "{'Nikhil' : 1, 'Akshat' : 2, 'Akash' : 3}"
+    
 
-    tab_question = tab_question.replace("\'", "\"")
+
+
+
+    listPreviousError = [' ', '(', '{', '[']
+    listNextError = [':', ',', ']']
+
+    i = 0
+    while (i < len(tab_question)):
+        if tab_question[i] == '\'' and ((tab_question[i + 1] in listNextError) or (tab_question[i - 1] in listPreviousError)):
+            tab_question = tab_question[:i] + '\"' + tab_question[i + 1:]
+        # elif tab_question[i] == '\'':
+        #     print("JE SUIS ICI MON GARS !")
+        i += 1
+
+
+
+    # tab_question = tab_question.replace("\'", "\"")
+
+
+
 
     pos = tab_question.find("{")
     lastpos = tab_question.find("}")
@@ -114,7 +134,7 @@ def quizQ():
 
     # test = choix[i:5]
 
-    return render_template('result_quiz.html', selection=selection, tab_question=question, jeux=jeux, trouve= trouve)
+    return render_template('result_quiz.html', selection=selection, tab_question=question, jeux=jeux, trouve= trouve, question=question["enonce"])
 
 @app.route('/quiz')
 def quiz():
