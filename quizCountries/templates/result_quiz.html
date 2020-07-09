@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}{{ super() }} - Quiz{% endblock %}
+{% block content %}
+    <h1 class="text-center">Quiz</h1> 
+    <hr>
+    <h2 class="mb-5 text-center">{{question}}</h2>
+        {% with %}
+        <div class="row">
+            {% for choix in jeux %}
+            <div class="col-3 text-center">
+                {% if choix == selection %}
+                    {% if trouve %}
+                        <div class="card mb-4 mx-auto" style="width: 75%; border-color: green">
+                    {% else %}
+                        <div class="card mb-4 mx-auto" style="width: 75%; border-color: red">
+                    {% endif %}
+                {% else %}
+                <div class="card mb-4 mx-auto" style="width: 75%; ">
+                {% endif %}
+                    <hr class="py-0 my-0">
+                    <div class="card-body pt-2">
+                        {% if tab_question.type == "flag_quiz.html" %}
+                            <img class="card-img-top" src="{{choix}}" alt="Card image cap">
+                        {% else %}
+                            <h5 class="card-title">{{choix}}</h5>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div>
+                {% if trouve %}
+                    <h5 class="card-title">Bonne réponse !</h5>
+                {% else %}
+                    <h5 class="card-title">Mauvaise réponse ! La bonne réponse est : </h5>
+                     {% if tab_question.type == "flag_quiz.html" %}
+                     <div class="col-3 text-center">
+                            <div class="card mb-4 mx-auto" style="width: 75%; ">
+                                <img class="card-img-top" src="{{tab_question.reponse}}" alt="Card image cap">
+                            </div>
+                        </div>
+                        {% else %}
+                    <div class="col-3 text-center">
+                        <div class="card mb-4 mx-auto" style="width: 75%; ">
+                            <h5 class="card-title">{{tab_question.reponse}}</h5>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                {% endif %}
+                <a href="{{ url_for('quiz') }}" class="btn btn-primary btn-lg btn-block">Prochaine question</a>
+            </div>
+        </div>
+        {% endwith %} 
+{% endblock %}

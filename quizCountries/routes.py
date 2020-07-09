@@ -4,6 +4,7 @@ from quizCountries.forms import RegistrationForm, LoginForm
 from quizCountries.models import User
 from flask_login import login_user, current_user, logout_user, login_required
 from quizCountries.functions import randomGame
+import json
 
 
 @app.route("/")
@@ -58,10 +59,62 @@ def logout():
 def account():
     return render_template('account.html', title='Account')
 
-@app.route('/quiz/<name>')
-def quizQ(name):
-    print(f"{name}")
-    return "name vaut : " + name
+@app.route('/quizResult', methods=['GET', 'POST'])
+def quizQ():
+
+    # if name == reponse:
+    #     result = "oui"
+    # else:
+    #     result = "non"
+
+    tab_question = request.form['select']
+
+    
+
+    test_string = "{'Nikhil' : 1, 'Akshat' : 2, 'Akash' : 3}"
+
+    tab_question = tab_question.replace("\'", "\"")
+
+    pos = tab_question.find("{")
+    lastpos = tab_question.find("}")
+
+    question = tab_question[pos:lastpos+1]
+    question = json.loads(question)
+
+    jeux = question["leschoix"]
+
+
+    selection = tab_question.replace(tab_question[pos:lastpos+1], '')
+    selection = selection.replace("\"", "")
+    selection = selection.replace("(", "")
+    selection = selection.replace(")", "")
+    selection = selection.replace(",", "")
+    selection = selection.strip()
+
+    if selection == question['reponse']:
+        trouve=1
+    else:
+        trouve=0
+        
+    print(trouve)
+
+    # test2= test['type']
+
+    
+
+    # test = choix.split()
+
+    # print(test)
+
+    # i = 1
+    # for lettre in choix:
+    #     if lettre == '{' or lettre == '}':
+    #         break
+    #     i+= 1
+
+    # test = choix[i:5]
+
+    return render_template('result_quiz.html', selection=selection, tab_question=question, jeux=jeux, trouve= trouve)
 
 @app.route('/quiz')
 def quiz():
@@ -69,8 +122,9 @@ def quiz():
     question = randomGame()
 
     jeux = question["leschoix"]
-    test = question["enonce"]
+    enonce = question["enonce"]
+    reponse = question["reponse"]
    
     templateQuiz = question["type"]
 
-    return render_template(templateQuiz, datas=jeux, question=test)
+    return render_template(templateQuiz, datas=jeux, question=enonce, tab_question=question)
