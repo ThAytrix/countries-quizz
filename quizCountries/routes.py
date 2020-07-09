@@ -96,7 +96,7 @@ def quizQ():
     else:
         trouve=0
         
-
+    print(trouve)
 
     # test2= test['type']
 

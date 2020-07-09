@@ -99,12 +99,12 @@ def monnaie():
 	question = {}
 	question["type"] = "monnaie_quiz.html"
 	question["enonce"] = "Quel est la monnaie de " + pays_reponse['translations']["fr"] + " ?"
-	question["reponse"] = pays_reponse['currencies'][0]
+	question["reponse"] = pays_reponse['currencies'][0]['name']
 	question["leschoix"] = []
-	question["leschoix"].append(pays_reponse['currencies'][0]['name'] + " (" + pays_reponse['currencies'][0]['symbol'] + ")")
-	question["leschoix"].append(pays_choix2['currencies'][0]['name'] + " (" + pays_choix2['currencies'][0]['symbol'] + ")")
-	question["leschoix"].append(pays_choix3['currencies'][0]['name'] + " (" + pays_choix3['currencies'][0]['symbol'] + ")")
-	question["leschoix"].append(pays_choix4['currencies'][0]['name'] + " (" + pays_choix4['currencies'][0]['symbol'] + ")")
+	question["leschoix"].append(pays_reponse['currencies'][0]['name'])
+	question["leschoix"].append(pays_choix2['currencies'][0]['name'])
+	question["leschoix"].append(pays_choix3['currencies'][0]['name'])
+	question["leschoix"].append(pays_choix4['currencies'][0]['name'])
 	random.shuffle(question["leschoix"])
 
 
