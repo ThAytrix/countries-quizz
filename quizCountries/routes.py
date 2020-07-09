@@ -3,6 +3,7 @@ from quizCountries import app, db, bcrypt
 from quizCountries.forms import RegistrationForm, LoginForm
 from quizCountries.models import User
 from flask_login import login_user, current_user, logout_user, login_required
+from quizCountries.functions import randomGame
 
 
 @app.route("/")
@@ -64,36 +65,12 @@ def quizQ(name):
 
 @app.route('/quiz')
 def quiz():
-    pays = [
-        {
-            'name': 'Estonia',
-            'alpha3Code' : 'EST',
-            'capital': 'Tallinn',
-            'population': 1315944,
-            'flag': 'https://restcountries.eu/data/est.svg'         
-        },
-        {
-            'name': 'France',
-            'alpha3Code' : 'FRA',
-            'capital': 'Paris',
-            'population': 66710000,
-            'flag': 'https://restcountries.eu/data/fra.svg'  
-        },
-        {  
-            'name': 'Belgium',
-            'alpha3Code' : 'BEL',
-            'capital': 'Brussels',
-            'population': 11319511,
-            'flag': 'https://restcountries.eu/data/bel.svg'  
-        },
-        {  
-            'name': 'Italy',
-            'alpha3Code' : 'ITA',
-            'capital': 'Rome',
-            'population': 60665551,
-            'flag': 'https://restcountries.eu/data/ita.svg'  
-        }
-    ]
 
-    question = "Quel pays a pour capitale Rome?"
-    return render_template('quiz.html', datas=pays, question=question)
+    question = randomGame()
+
+    jeux = question["leschoix"]
+    test = question["enonce"]
+   
+    templateQuiz = question["type"]
+
+    return render_template(templateQuiz, datas=jeux, question=test)
