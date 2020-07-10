@@ -29,7 +29,7 @@
 <!-- TABLE OF CONTENTS -->
 ## Table des matières
 
-* [À Propos du projet](#à-propos-du-projet)
+* [À propos du projet](#à-propos-du-projet)
 * [Commencement](#commencement)
   * [Pré-requis](#pré-requis)
   * [Installation](#installation)
@@ -41,7 +41,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## À Propos du projet
+## À propos du projet
 
 Quiz Coutries est un site basé sous Flask en python qui vous propose des questions géographgique (monnaie, capitale et drapeau)
 
@@ -109,7 +109,7 @@ Ce sont les contributions qui font de la communauté open source. Toutes les con
 
 1. Copier le projet
 2. Créez votre propre Branch (`git checkout -b feature/countries-quizz`)
-3. Faites vos modifications (`git commit -m 'Nouveautés')
+3. Faites vos modifications (`git commit -m 'Nouveautés'`)
 4. Push vers votre Branch (`git push origin feature/countries-quizz`)
 5. Ouvrir une requête pull
 
