@@ -69,13 +69,6 @@ def quizQ():
 
     tab_question = request.form['select']
 
-    
-
-    test_string = "{'Nikhil' : 1, 'Akshat' : 2, 'Akash' : 3}"
-    
-
-
-
 
     listPreviousError = [' ', '(', '{', '[']
     listNextError = [':', ',', ']']
@@ -148,3 +141,11 @@ def quiz():
     templateQuiz = question["type"]
 
     return render_template(templateQuiz, datas=jeux, question=enonce, tab_question=question)
+
+
+@app.errorhandler(401)
+@app.errorhandler(404)
+@app.errorhandler(500)
+def ma_page_erreur(error):
+    return render_template('error.html')
+
