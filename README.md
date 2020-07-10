@@ -54,9 +54,8 @@ Pour lancer ce projet, veuillez suivre les étapes suivantes
 ### Pré-requis
 
 * Anaconda
-```
+
 https://www.anaconda.com/products/individual#Downloads
-```
 
 * Python 3.7
 
@@ -109,7 +108,7 @@ Jetez un oeil à nos [issues](https://github.com/ThAytrix/countries-quizz/issues
 <!-- CONTRIBUTING -->
 ## Contribuer
 
-Ce sont les contributions qui font de la communauté open source. Toutes les contributions que vous apportez sont **très appréciées**.
+Ce sont les contributions qui font la communauté open source. Toutes les contributions que vous apportez sont **très appréciées**.
 
 1. Copier le projet
 2. Créez votre propre Branch (`git checkout -b feature/countries-quizz`)
