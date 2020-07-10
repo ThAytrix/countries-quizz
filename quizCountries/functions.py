@@ -1,3 +1,8 @@
+from flask import render_template, url_for, flash, redirect, request
+from quizCountries import app, db, bcrypt
+from quizCountries.forms import RegistrationForm, LoginForm
+from quizCountries.models import User
+from flask_login import login_user, current_user, logout_user, login_required
 from random import randrange
 import requests
 import json
@@ -49,7 +54,7 @@ def getFourDifferentsCountriesWithDifferentsDevises(nbre_pays, rq_pays):
 
 def capital():
 
-	#url_un_pays = "https://restcountries.eu/rest/v2/name/" + pays + "?fullText=true"
+
 	url_total_pays = "https://restcountries.eu/rest/v2/all"
 
 	rq_pays = requests.get(url_total_pays)
@@ -175,3 +180,17 @@ def drapeau():
 
 
 	return question
+
+def infosJoueur(reussite):
+
+	id = current_user.id
+	user = User.query.filter_by(id=current_user.id).first()
+	user.nbrePartie += 1
+
+	if reussite:
+		user.nbreReussite += 1
+
+	db.session.commit()
+
+
+

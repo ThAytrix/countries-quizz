@@ -51,6 +51,9 @@
                         
                     {% endif %}
                     <a href="{{ url_for('quiz') }}" class="btn btn-primary btn-lg btn-block mt-1 mb-1">Prochaine question</a>
+                    {% if current_user.is_authenticated %}
+                        <h5 class="card-title">Vous avez gagné : {{current_user.nbreReussite}} fois</h5>
+                    {% endif %}
                 </div>
             </div>
         {% endwith %} 
