@@ -53,6 +53,11 @@ Pour lancer ce projet, veuillez suivre les étapes suivantes
 
 ### Pré-requis
 
+* Anaconda
+```
+https://www.anaconda.com/products/individual#Downloads
+```
+
 * Python 3.7
 
 ##### Debian / Ubuntu
