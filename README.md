@@ -134,5 +134,5 @@ Distribué sous la licence MIT. Voir "LICENSE" pour plus d'informations.
 [issues-shield]: https://img.shields.io/github/issues/ThAytrix/countries-quizz.svg?style=flat-square
 [issues-url]: https://github.com/ThAytrix/countries-quizz/issues
 [license-shield]: https://img.shields.io/github/license/ThAytrix/countries-quizz.svg?style=flat-square
-[license-url]: https://github.com/ThAytrix/countries-quizz/blob/master/LICENSE.txt
+[license-url]: https://github.com/ThAytrix/countries-quizz/blob/master/LICENSE.md
 [product-screenshot]: images/screenshot.png
