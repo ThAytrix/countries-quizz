@@ -8,11 +8,15 @@
 	</div>
 	<hr>
 	<div class="row">
-		<h2 class="mb-5">Nombre de partie : {{ current_user.nbrePartie }}</h2>
+		<h2>Partie joué : {{ current_user.nbrePartie }}</h2>
 	</div>
-	<div class="row">     
-	      	<span>Taux de réussite : <strong> {{ ((current_user.nbreReussite / current_user.nbrePartie) * 100)|round|int }} % </strong></span>
-	    
+	<div class="row">
+		{% if current_user.nbrePartie != 0 %}
+                     <span>Taux de réussite : <strong> {{ ((current_user.nbreReussite / current_user.nbrePartie) * 100)|round|int }} % </strong></span>
+           {% else %}
+                     <span>Taux de réussite : Aucune partie</span>
+           {% endif %}     
+
 	   
 	</div>
 {% endblock content %}

@@ -183,7 +183,6 @@ def drapeau():
 
 def infosJoueur(reussite):
 
-	id = current_user.id
 	user = User.query.filter_by(id=current_user.id).first()
 	user.nbrePartie += 1
 
