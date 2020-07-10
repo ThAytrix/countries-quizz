@@ -36,13 +36,13 @@ def register():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('quiz'))
+        return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            return redirect(url_for('quiz'))
+            return redirect(url_for('home'))
         else:
             flash('Connexion non réussie. Veuillez vérifier l\'adresse électronique et le mot de passe', 'danger')
     return render_template('login.html', title='Login', form=form)
@@ -68,13 +68,6 @@ def quizQ():
     #     result = "non"
 
     tab_question = request.form['select']
-
-    
-
-    test_string = "{'Nikhil' : 1, 'Akshat' : 2, 'Akash' : 3}"
-    
-
-
 
 
     listPreviousError = [' ', '(', '{', '[']
@@ -148,3 +141,11 @@ def quiz():
     templateQuiz = question["type"]
 
     return render_template(templateQuiz, datas=jeux, question=enonce, tab_question=question)
+
+
+@app.errorhandler(401)
+@app.errorhandler(404)
+@app.errorhandler(500)
+def ma_page_erreur(error):
+    return render_template('error.html')
+
